@@ -1,6 +1,9 @@
-# Sixth Assignment: Advanced Multithreading
+# 
+
+ Sixth Assignment: Advanced Multithreading
 
 ## Table of contents
+
 - [Important Note](#important-note)
 - [Introduction](#introduction)
 - [Objectives 🎯](#objectives-)
@@ -11,51 +14,42 @@
 - [Submission ⌛](#submission-)
 - [Additional Resources 📚](#additional-resources-)
 
-
 ## Important Note:
+
 When you're opening this project on your own system, please make sure to:
 
 1. Go to **Settings/Preferences** > **Build, Execution, Deployment** > **Build Tools** > **Gradle**.
-
 2. Under **Gradle settings**, change the **Gradle distribution** to:
 
 - **Use local Gradle distribution**, and
-
 - Set the **Gradle home** path to your own local Gradle installation directory.
 
 If you don’t have Gradle installed locally, you can either:
 
 - Install Gradle manually and configure the path, or
-
 - Change the setting to **Use Gradle wrapper** instead.
 
-
-
 ## Introduction
+
 Welcome to the Sixth Advanced Programming (AP) Assignment. This project is divided into two main sections:
 
 1. **Theoretical Questions**: This section is designed to deepen your understanding of advanced multithreading concepts in Java. You'll have to analyze one code block and answer questions about it.
-
 2. **Practical Questions**: In this section, you'll get hands-on experience with multithreading in Java. Your code will be manually checked to ensure you've implemented the tasks using multithreading.
-
 
 ## Objectives 🎯
 
 - Practice more advanced concepts of multithreading and concurrency in Java.
-
 - Understand different approaches to synchronization and thread safety.
-
 - Apply concurrency techniques in practical simulations and systems.
-
 - Compare performance between single-threaded and multi-threaded solutions.
 
-
 ## Theoretical Questions 📝
+
 **Note: Please answer these questions in a Markdown file (Report.md) and place it in the root directory of your fork. Include code or screenshots where you see fit.**
 
 ### 1. `Atomic Variables`
 
-```java  
+```java
 import java.util.concurrent.atomic.AtomicInteger;
 public class AtomicDemo {
   private static AtomicInteger atomicCounter = new AtomicInteger(0);
@@ -80,31 +74,26 @@ public class AtomicDemo {
   }
 }
   
-```  
+```
 
 **Questions:**
 
 - What output do you get from the program? Why?
-
 - What is the purpose of AtomicInteger in this code?
-
 - What thread-safety guarantees does atomicCounter.incrementAndGet() provide?
-
 - In which situations would using a lock be a better choice than an atomic variable?
-
 - Besides AtomicInteger, what other data types are available in the java.util.concurrent.atomic package?
 
----  
-
+---
 
 ## Practical Questions 💻
 
 ### 🧮 Pi (π) Estimation - Monte Carlo Algorithm
 
-
 ![](./Images/MonteCarlo.jpg)
 
 #### Task Description
+
 The Monte Carlo algorithm for estimating π (pi) is a classic example of using
 random sampling to approximate a mathematical constant.
 
@@ -130,14 +119,12 @@ $$
 
 If the condition is satisfied, the point is considered **inside the circle**, and we increment the corresponding counter.
 
-
 #### 🛠 What  You  Need to Do
 
 1. Complete the Code:
    Implement the Monte Carlo simulation to estimate the value of π. The implementation should include both:
 
 - A single-threaded version.
-
 - A multi-threaded version.
 
 2. Compare the result:
@@ -148,9 +135,8 @@ If the condition is satisfied, the point is considered **inside the circle**, an
 
 - Was the multi-threaded implementation always faster than the single-threaded one?
 
-    - If yes, why?
-
-    - If not, what factors are the cause and what can you do to mitigate these issues?
+  - If yes, why?
+  - If not, what factors are the cause and what can you do to mitigate these issues?
 
 ---
 
@@ -167,72 +153,63 @@ Note: Account setup, input parsing, and thread management are already implemente
 ---
 
 #### 🛠 What You Need to Do
- 
+
 1. **Your Task**
    You only need to implement the following methods inside the `BankAccount` class:
 
-    * `deposit(int amount)`
-    * `withdraw(int amount)`
-    * `transfer(BankAccount target, int amount)`
-
+   * `deposit(int amount)`
+   * `withdraw(int amount)`
+   * `transfer(BankAccount target, int amount)`
 2. **Concurrency Requirements**
 
-    * All methods must be **thread-safe**. Multiple threads may access and modify the same accounts concurrently.
-    * You **must prevent race conditions** using synchronization mechanisms such as `ReentrantLock`.
-    * For `transfer`, you **must acquire locks on both source and target accounts simultaneously**.
-    * 🔒 **Note:** Improper locking can lead to deadlocks. Identify the problem and prevent it from happening.
-       
-
+   * All methods must be **thread-safe**. Multiple threads may access and modify the same accounts concurrently.
+   * You **must prevent race conditions** using synchronization mechanisms such as `ReentrantLock`.
+   * For `transfer`, you **must acquire locks on both source and target accounts simultaneously**.
+   * 🔒 **Note:** Improper locking can lead to deadlocks. Identify the problem and prevent it from happening.
 3. **Note:**
-   
+
    For the sake of simplicity in this assignment, you do not need to check whether the balance is sufficient before performing a withdrawal or a transfer.
    This means accounts are allowed to have negative balances, and there is no need to throw exceptions or block operations due to insufficient funds.
-
 4. Tests are provided — run them multiple times to ensure consistent results. This helps verify that your implementation is free of race conditions and deadlocks.
 
----  
-
-
+---
 
 ## Bonus Tasks 🌟
 
 ### Monte Carlo
-  
-1. **Graphical Visualization (UI)**  
-    - Use a UI framework like **JavaFX** to visualize the simulation:
-     - Show the square and inscribed circle.
-       - Plot random points in real time:
-         - **Green** dots for points inside the circle.
-         - **Red** dots for points outside the circle.
-       - Update the estimated value of π dynamically as points are plotted.
 
-2. **Benchmark**  
+1. **Graphical Visualization (UI)**
+
+   - Use a UI framework like **JavaFX** to visualize the simulation:
+   - Show the square and inscribed circle.
+     - Plot random points in real time:
+       - **Green** dots for points inside the circle.
+       - **Red** dots for points outside the circle.
+     - Update the estimated value of π dynamically as points are plotted.
+2. **Benchmark**
+
    - Create a report comparing runtime vs. number of points for both single-threaded and multi-threaded runs.
    - Export results as a CSV or JSON file.
 
 ### Banking System
+
 1. Live Charting:
    - Display balance changes over time using a live chart.
-  
-
 
 ## Evaluation 📊
 
 Your work on this assignment will be evaluated based on:
 
 - **Understanding of Multithreading Concepts**: Your ability to accurately answer the theoretical questions, and demonstrating a deep understanding of multithreading in Java. Remember that the answers to the theoretical questions should be provided separately in a markdown file.
-
 - **Code Quality**: Your code should be well-structured, readable, and efficient. Proper use of Java conventions, including variable naming, class structure, and comments, will also be considered.
-
 - Don’t forget to answer the question in the Monte Carlo task within the report file.
-
 - Your Banking System code must pass all the provided tests.
-
 - Total: 100 points
-    - 🧠 Theoretical Questions – 20 points
-    - 🧮 Practical Task 1 (Monte Carlo) – 50 points
-    - 🏦 Practical Task 2 (Banking System) – 30 points
-    - 🌟 Bonus Tasks – Up to 10 extra points
+
+  - 🧠 Theoretical Questions – 20 points
+  - 🧮 Practical Task 1 (Monte Carlo) – 50 points
+  - 🏦 Practical Task 2 (Banking System) – 30 points
+  - 🌟 Bonus Tasks – Up to 10 extra points
 
 ## Submission ⌛
 

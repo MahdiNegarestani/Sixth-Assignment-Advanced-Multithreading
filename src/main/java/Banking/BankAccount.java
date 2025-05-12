@@ -27,15 +27,50 @@ public class BankAccount {
 
     public void deposit(int amount) {
         // TODO: Safely add to balance.
+        try {
+            getLock().lock();
+            balance += amount;
+        } finally {
+            lock.unlock();
+        }
     }
+
+    // v1
+    // v2
+
+
 
     public void withdraw(int amount) {
         // TODO: Safely withdraw from balance.
+        try {
+            getLock().lock();
+            balance -= amount;
+        } finally {
+            lock.unlock();
+        }
     }
 
     public void transfer(BankAccount target, int amount) {
         // TODO: Safely make the changes
         // HINT: Both accounts need to be locked, while the changes are being made
         // HINT: Be cautious of potential deadlocks.
+        BankAccount first;
+        BankAccount second;
+        if (this.id < target.getId()) {
+            first = this;
+            second = target;
+        } else {
+            first = target;
+            second = this;
+        }
+        try {
+            first.getLock().lock();
+            second.getLock().lock();
+            balance -= amount;
+            target.balance += amount;
+        } finally {
+            second.getLock().unlock();
+            first.getLock().unlock();
+        }
     }
 }
