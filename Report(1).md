@@ -61,3 +61,13 @@ public class AtomicDemo {
         * Others...
 
 ---
+
+
+**Monte Carlo Questions**
+
+
+No. The multi-thread version is slower than the single-thread version
+
+because the actions are simple, and creating threads would result in more wasted time
+
+Multi-thread would be better if we had more complicated tasks to assign to them

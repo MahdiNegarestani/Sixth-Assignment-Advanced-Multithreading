@@ -35,11 +35,6 @@ public class BankAccount {
         }
     }
 
-    // v1
-    // v2
-
-
-
     public void withdraw(int amount) {
         // TODO: Safely withdraw from balance.
         try {
